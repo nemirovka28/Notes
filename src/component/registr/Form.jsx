@@ -2,12 +2,23 @@ import React from 'react'
 import { useState } from "react";
 
 function Form({title,onSubmitHandler}) {
+
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
   return (
     <div>
-        <form onSubmit={(e) => onSubmitHandler(e,email,password)}>
+        <form onSubmit={(e) => onSubmitHandler(e, name,email,password)}>
+           <label htmlFor="email">Введите вашe имя</label>
+            <input 
+            required
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Alex"
+            value={name}
+            onChange={ (e) => setName(e.target.value)}/>
 
             <label htmlFor="email">Введите ваш e-mail</label>
             <input 
