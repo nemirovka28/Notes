@@ -1,22 +1,22 @@
 import React from 'react'
-import { Form } from './Form'
+import { Form } from '../Form/Form'
 import {useNavigate} from 'react-router-dom';
 import { getAuth,signInWithPopup,signInWithEmailAndPassword,GoogleAuthProvider } from "firebase/auth";
 import { useDispatch } from 'react-redux/es/exports'
-import {setUser} from '../store/userSlice';
+import {setUser} from '../../store/userSlice';
+import classes from './Login.module.css';
 
 function Login() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const onSubmitHandler = (e,name,email,password) => {
+    const onSubmitHandler = (e,email,password) => {
         e.preventDefault();
         const auth = getAuth();      
         signInWithEmailAndPassword(auth, email, password)
         .then(({user})=>{
             dispatch(setUser({
-                name: name,
                 email:user.email,
                 id:user.id,
                 token:user.accessToken,
@@ -58,9 +58,11 @@ function Login() {
       <Form
         title="Sign in"
         onSubmitHandler={onSubmitHandler}/>
-        <button
-        onClick={onSubmitGoogle}>
-        Login with Google</button>
+        <button 
+            className={classes.btn}
+            onClick={onSubmitGoogle}>
+                Login with Google
+        </button>
     </div>
   )
 }

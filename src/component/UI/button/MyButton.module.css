@@ -1,0 +1,16 @@
+.myBtn {
+    padding: 15px 15px;
+    width: 100px;
+    margin-top: 20px;
+    color: teal;
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid blue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.myBtn:hover{
+    background-color: rgb(203, 203, 222);
+    border: 1px solid white;
+    color:black;
+}

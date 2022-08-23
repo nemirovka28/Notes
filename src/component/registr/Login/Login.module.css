@@ -1,0 +1,30 @@
+.btn{
+    margin-top: 30px;
+    position: relative;
+    width: 150px;
+    padding-left: 35px;
+    background-color: #fff;
+    border: 1px solid blue;
+    border-radius: 5px;
+    height: 48px;
+    top: -78px;
+    left: 400px;
+}
+.btn::before{
+    content: "";
+    position: absolute;
+    padding-left: 10px;
+    top: 11px;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background-image: url(../google_icon-icons.com_62736.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: rgb(203, 203, 222);
+    border: 1px solid white;
+}

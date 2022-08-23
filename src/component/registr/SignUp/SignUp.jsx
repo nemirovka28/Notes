@@ -1,31 +1,36 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom';
-import { Form } from './Form'
+import { Form } from '../Form/Form'
 import { getAuth, createUserWithEmailAndPassword,signInWithPopup ,GoogleAuthProvider } from "firebase/auth";
 import { useDispatch } from 'react-redux/es/exports'
-import {setUser} from '../store/userSlice';
-import { FirebaseError } from 'firebase/app';
+import {setUser} from '../../store/userSlice';
+import MyButton from '../../UI/button/MyButton';
+import classes from "./SignUp.module.css";
 
 function SignUp() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const onSubmitHandlerRegister = (e,name,email,password) => {
+    const onSubmitHandlerRegister = (e,email,password) => {
         e.preventDefault();
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then(({user})=>{
-                console.log(name)
                 dispatch(setUser({
-                    name: name,
                     email:user.email,
                     id:user.id,
                     token:user.accessToken,
                 }))
                 navigate("/", { replace: true });
             })
-            .catch(console.error)
+            .catch((error) => {
+                if(error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).'){
+                    alert('Аккаунт уже существует')
+                } else {
+                    console.log('no')
+                }
+            });
     }
 
     function onSubmitGoogle () {
@@ -42,7 +47,6 @@ function SignUp() {
         
             const user = result.user;
             dispatch(setUser({
-                name: user.displayName,
                 email:user.email,
                 id:user.uid,
                 token:user.accessToken,
@@ -61,9 +65,11 @@ function SignUp() {
           <Form
             title="Register"
             onSubmitHandler={onSubmitHandlerRegister}/>
-            <button
-                onClick={onSubmitGoogle}>
-                Registr with Google</button>
+            <button 
+            className={classes.btn}
+             onClick={onSubmitGoogle}>
+                Registr with Google
+            </button>
         </div>
       )
 }
