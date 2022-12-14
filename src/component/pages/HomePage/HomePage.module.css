@@ -1,0 +1,33 @@
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.header {
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    width: 100%;
+    background-color: rgb(166, 166, 233);
+}
+.nav{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    margin-left: auto;
+    font-size: 16px;
+    margin-right: 20px;
+}
+.btn{
+    max-width: 200px;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 20px;
+    background-color: transparent;
+    border: 1px solid blue;
+    border-radius: 6px;
+}
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(86, 86, 197);
+}

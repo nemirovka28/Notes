@@ -6,11 +6,12 @@ import classes from './RegisterPage.module.css'
 function RegisterPage() {
   return (
     <div className={classes.container}>
-        <h1 className={classes.title}>Register</h1>
+        <h1 className={classes.title}>Registration</h1>
         <SignUp/>
-             <p className={classes.text}>
-                Alredy have an account? <Link to="/login">Sign in</Link> 
-            </p>
+          <Link 
+            className={classes.text}
+            to="/login"> Alredy have an account?
+          </Link> 
     </div>
   )
 }

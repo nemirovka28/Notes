@@ -1,8 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './component/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './component/store';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import './component/firebase'
 
@@ -12,7 +14,11 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App /> 
+      <PersistGate
+          loading={null}
+          persistor={persistor}>
+          <App /> 
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

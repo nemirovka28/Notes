@@ -7,7 +7,7 @@ import MyButton from '../../UI/button/MyButton';
 function LoginPages() {
   return (
     <div className={classes.container}>
-        <h1 className={classes.title}>Login</h1>
+        <h1 className={classes.title}>Log in</h1>
         <Login/>
             <p className={classes.text}>
                  <Link to="/register">
